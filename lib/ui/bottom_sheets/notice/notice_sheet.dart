@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:jolly_podcast/ui/common/app_colors.dart';
-import 'package:jolly_podcast/ui/common/ui_helpers.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -9,8 +7,8 @@ import 'notice_sheet_model.dart';
 class NoticeSheet extends StackedView<NoticeSheetModel> {
   final Function(SheetResponse)? completer;
   final SheetRequest request;
-  const NoticeSheet({Key? key, required this.completer, required this.request})
-      : super(key: key);
+  const NoticeSheet(
+      {super.key, required this.completer, required this.request});
 
   @override
   Widget builder(
@@ -26,24 +24,6 @@ class NoticeSheet extends StackedView<NoticeSheetModel> {
           topLeft: Radius.circular(10),
           topRight: Radius.circular(10),
         ),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(
-            request.title!,
-            style: const TextStyle(fontSize: 25, fontWeight: FontWeight.w900),
-          ),
-          verticalSpaceTiny,
-          Text(
-            request.description!,
-            style: const TextStyle(fontSize: 14, color: kcMediumGrey),
-            maxLines: 3,
-            softWrap: true,
-          ),
-          verticalSpaceLarge,
-        ],
       ),
     );
   }

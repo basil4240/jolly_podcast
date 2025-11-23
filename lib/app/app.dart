@@ -8,7 +8,12 @@ import 'package:jolly_podcast/ui/views/podcast_list/podcast_list_view.dart';
 import 'package:jolly_podcast/ui/views/episode_list/episode_list_view.dart';
 import 'package:jolly_podcast/ui/views/player/player_view.dart';
 import 'package:jolly_podcast/ui/dialogs/network_error/network_error_dialog.dart';
-// @stacked-import
+import 'package:jolly_podcast/services/auth_service.dart';
+import 'package:jolly_podcast/services/episode_service.dart';
+import 'package:jolly_podcast/services/podcast_service.dart';
+import 'package:jolly_podcast/services/local_storage_service.dart';
+import 'package:jolly_podcast/services/shared_preference_service.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 @StackedApp(
   routes: [
@@ -23,7 +28,15 @@ import 'package:jolly_podcast/ui/dialogs/network_error/network_error_dialog.dart
     LazySingleton(classType: BottomSheetService),
     LazySingleton(classType: DialogService),
     LazySingleton(classType: NavigationService),
-    // @stacked-service
+    LazySingleton(classType: AuthService),
+    LazySingleton(classType: EpisodeService),
+    LazySingleton(classType: PodcastService),
+    InitializableSingleton(
+      classType: SharedPreferenceService,
+      asType: LocalStorageService,
+    ),
+
+// @stacked-service
   ],
   bottomsheets: [
     StackedBottomsheet(classType: NoticeSheet),
@@ -34,5 +47,6 @@ import 'package:jolly_podcast/ui/dialogs/network_error/network_error_dialog.dart
     StackedDialog(classType: NetworkErrorDialog),
 // @stacked-dialog
   ],
+  logger: StackedLogger(),
 )
 class App {}

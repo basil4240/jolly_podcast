@@ -11,6 +11,12 @@ import 'package:stacked_services/src/dialog/dialog_service.dart';
 import 'package:stacked_services/src/navigation/navigation_service.dart';
 import 'package:stacked_shared/stacked_shared.dart';
 
+import '../services/auth_service.dart';
+import '../services/episode_service.dart';
+import '../services/local_storage_service.dart';
+import '../services/podcast_service.dart';
+import '../services/shared_preference_service.dart';
+
 final locator = StackedLocator.instance;
 
 Future<void> setupLocator({
@@ -25,4 +31,10 @@ Future<void> setupLocator({
   locator.registerLazySingleton(() => BottomSheetService());
   locator.registerLazySingleton(() => DialogService());
   locator.registerLazySingleton(() => NavigationService());
+  locator.registerLazySingleton(() => AuthService());
+  locator.registerLazySingleton(() => EpisodeService());
+  locator.registerLazySingleton(() => PodcastService());
+  final sharedPreferenceService = SharedPreferenceService();
+  await sharedPreferenceService.init();
+  locator.registerSingleton<LocalStorageService>(sharedPreferenceService);
 }
