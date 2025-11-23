@@ -4,6 +4,7 @@ import 'package:jolly_podcast/app/app.dialogs.dart';
 import 'package:jolly_podcast/app/app.locator.dart';
 import 'package:jolly_podcast/app/app.router.dart';
 import 'package:jolly_podcast/ui/common/app_dark_theme.dart';
+import 'package:jolly_podcast/ui/common/app_light_theme.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 Future<void> main() async {
@@ -21,9 +22,10 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // For now i just used dark theme,
       // TODO: add proper light theme when available
-      theme: appDarkTheme,
+      theme: appLightTheme,
+      darkTheme: appDarkTheme,
+      themeMode: ThemeMode.dark,
       debugShowCheckedModeBanner: false,
       initialRoute: Routes.startupView,
       onGenerateRoute: StackedRouter().onGenerateRoute,

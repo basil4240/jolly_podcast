@@ -14,6 +14,7 @@ import 'package:jolly_podcast/services/podcast_service.dart';
 import 'package:jolly_podcast/services/local_storage_service.dart';
 import 'package:jolly_podcast/services/shared_preference_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:jolly_podcast/core/network/dio_client.dart';
 
 @StackedApp(
   routes: [
@@ -31,6 +32,7 @@ import 'package:shared_preferences/shared_preferences.dart';
     LazySingleton(classType: AuthService),
     LazySingleton(classType: EpisodeService),
     LazySingleton(classType: PodcastService),
+    LazySingleton(classType: DioClient),
     InitializableSingleton(
       classType: SharedPreferenceService,
       asType: LocalStorageService,
