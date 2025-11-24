@@ -815,4 +815,52 @@ class MockSharedPreferenceService extends _i1.Mock
         returnValue: _i2.Future<void>.value(),
         returnValueForMissingStub: _i2.Future<void>.value(),
       ) as _i2.Future<void>);
+
+  @override
+  _i2.Future<void> clearTokens() => (super.noSuchMethod(
+        Invocation.method(
+          #clearTokens,
+          [],
+        ),
+        returnValue: _i2.Future<void>.value(),
+        returnValueForMissingStub: _i2.Future<void>.value(),
+      ) as _i2.Future<void>);
+
+  @override
+  _i2.Future<void> setAccessToken(String? accessToken) => (super.noSuchMethod(
+        Invocation.method(
+          #setAccessToken,
+          [accessToken],
+        ),
+        returnValue: _i2.Future<void>.value(),
+        returnValueForMissingStub: _i2.Future<void>.value(),
+      ) as _i2.Future<void>);
+
+  @override
+  _i2.Future<void> setRefreshToken(String? refreshToken) => (super.noSuchMethod(
+        Invocation.method(
+          #setRefreshToken,
+          [refreshToken],
+        ),
+        returnValue: _i2.Future<void>.value(),
+        returnValueForMissingStub: _i2.Future<void>.value(),
+      ) as _i2.Future<void>);
+
+  @override
+  _i2.Future<void> setTokens({
+    required String? accessToken,
+    required String? refreshToken,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #setTokens,
+          [],
+          {
+            #accessToken: accessToken,
+            #refreshToken: refreshToken,
+          },
+        ),
+        returnValue: _i2.Future<void>.value(),
+        returnValueForMissingStub: _i2.Future<void>.value(),
+      ) as _i2.Future<void>);
 }

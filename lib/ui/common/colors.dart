@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 // Dark theme colors
+
+// 0xFF6B6B6B
+
 const kcLightColor1 = Color(0xFF003334);
 const kcLightColor2 = Color(0xFF383838);
 const kcLightColor3 = Color(0xFFE4E4E4);

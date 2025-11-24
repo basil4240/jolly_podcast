@@ -81,14 +81,18 @@ class StackedRouter extends _i1.RouterBase {
       );
     },
     _i5.EpisodeListView: (data) {
+      final args = data.getArgs<EpisodeListViewArguments>(nullOk: false);
       return _i7.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i5.EpisodeListView(),
+        builder: (context) =>
+            _i5.EpisodeListView(key: args.key, podcastId: args.podcastId),
         settings: data,
       );
     },
     _i6.PlayerView: (data) {
+      final args = data.getArgs<PlayerViewArguments>(nullOk: false);
       return _i7.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i6.PlayerView(),
+        builder: (context) =>
+            _i6.PlayerView(key: args.key, episodeId: args.episodeId),
         settings: data,
       );
     },
@@ -99,6 +103,60 @@ class StackedRouter extends _i1.RouterBase {
 
   @override
   Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
+}
+
+class EpisodeListViewArguments {
+  const EpisodeListViewArguments({
+    this.key,
+    required this.podcastId,
+  });
+
+  final _i7.Key? key;
+
+  final int podcastId;
+
+  @override
+  String toString() {
+    return '{"key": "$key", "podcastId": "$podcastId"}';
+  }
+
+  @override
+  bool operator ==(covariant EpisodeListViewArguments other) {
+    if (identical(this, other)) return true;
+    return other.key == key && other.podcastId == podcastId;
+  }
+
+  @override
+  int get hashCode {
+    return key.hashCode ^ podcastId.hashCode;
+  }
+}
+
+class PlayerViewArguments {
+  const PlayerViewArguments({
+    this.key,
+    required this.episodeId,
+  });
+
+  final _i7.Key? key;
+
+  final int episodeId;
+
+  @override
+  String toString() {
+    return '{"key": "$key", "episodeId": "$episodeId"}';
+  }
+
+  @override
+  bool operator ==(covariant PlayerViewArguments other) {
+    if (identical(this, other)) return true;
+    return other.key == key && other.episodeId == episodeId;
+  }
+
+  @override
+  int get hashCode {
+    return key.hashCode ^ episodeId.hashCode;
+  }
 }
 
 extension NavigatorStateExtension on _i8.NavigationService {
@@ -144,28 +202,34 @@ extension NavigatorStateExtension on _i8.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> navigateToEpisodeListView([
+  Future<dynamic> navigateToEpisodeListView({
+    _i7.Key? key,
+    required int podcastId,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return navigateTo<dynamic>(Routes.episodeListView,
+        arguments: EpisodeListViewArguments(key: key, podcastId: podcastId),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
         transition: transition);
   }
 
-  Future<dynamic> navigateToPlayerView([
+  Future<dynamic> navigateToPlayerView({
+    _i7.Key? key,
+    required int episodeId,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return navigateTo<dynamic>(Routes.playerView,
+        arguments: PlayerViewArguments(key: key, episodeId: episodeId),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -214,28 +278,34 @@ extension NavigatorStateExtension on _i8.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> replaceWithEpisodeListView([
+  Future<dynamic> replaceWithEpisodeListView({
+    _i7.Key? key,
+    required int podcastId,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return replaceWith<dynamic>(Routes.episodeListView,
+        arguments: EpisodeListViewArguments(key: key, podcastId: podcastId),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
         transition: transition);
   }
 
-  Future<dynamic> replaceWithPlayerView([
+  Future<dynamic> replaceWithPlayerView({
+    _i7.Key? key,
+    required int episodeId,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return replaceWith<dynamic>(Routes.playerView,
+        arguments: PlayerViewArguments(key: key, episodeId: episodeId),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
