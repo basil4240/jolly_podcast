@@ -13,4 +13,4 @@ ThemeData get appDarkTheme => ThemeData(
       AppColors.dark(),
       AppInputDecorations.dark()
     ],
-    scaffoldBackgroundColor: kcWhiteColor);
+    scaffoldBackgroundColor: AppColors.dark().color4!);
