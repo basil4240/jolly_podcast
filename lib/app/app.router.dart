@@ -83,8 +83,11 @@ class StackedRouter extends _i1.RouterBase {
     _i5.EpisodeListView: (data) {
       final args = data.getArgs<EpisodeListViewArguments>(nullOk: false);
       return _i7.MaterialPageRoute<dynamic>(
-        builder: (context) =>
-            _i5.EpisodeListView(key: args.key, podcastId: args.podcastId),
+        builder: (context) => _i5.EpisodeListView(
+            key: args.key,
+            podcastId: args.podcastId,
+            podcastTitle: args.podcastTitle,
+            podcastAuthor: args.podcastAuthor),
         settings: data,
       );
     },
@@ -109,26 +112,38 @@ class EpisodeListViewArguments {
   const EpisodeListViewArguments({
     this.key,
     required this.podcastId,
+    required this.podcastTitle,
+    required this.podcastAuthor,
   });
 
   final _i7.Key? key;
 
   final int podcastId;
 
+  final String podcastTitle;
+
+  final String podcastAuthor;
+
   @override
   String toString() {
-    return '{"key": "$key", "podcastId": "$podcastId"}';
+    return '{"key": "$key", "podcastId": "$podcastId", "podcastTitle": "$podcastTitle", "podcastAuthor": "$podcastAuthor"}';
   }
 
   @override
   bool operator ==(covariant EpisodeListViewArguments other) {
     if (identical(this, other)) return true;
-    return other.key == key && other.podcastId == podcastId;
+    return other.key == key &&
+        other.podcastId == podcastId &&
+        other.podcastTitle == podcastTitle &&
+        other.podcastAuthor == podcastAuthor;
   }
 
   @override
   int get hashCode {
-    return key.hashCode ^ podcastId.hashCode;
+    return key.hashCode ^
+        podcastId.hashCode ^
+        podcastTitle.hashCode ^
+        podcastAuthor.hashCode;
   }
 }
 
@@ -205,6 +220,8 @@ extension NavigatorStateExtension on _i8.NavigationService {
   Future<dynamic> navigateToEpisodeListView({
     _i7.Key? key,
     required int podcastId,
+    required String podcastTitle,
+    required String podcastAuthor,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -212,7 +229,11 @@ extension NavigatorStateExtension on _i8.NavigationService {
         transition,
   }) async {
     return navigateTo<dynamic>(Routes.episodeListView,
-        arguments: EpisodeListViewArguments(key: key, podcastId: podcastId),
+        arguments: EpisodeListViewArguments(
+            key: key,
+            podcastId: podcastId,
+            podcastTitle: podcastTitle,
+            podcastAuthor: podcastAuthor),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -281,6 +302,8 @@ extension NavigatorStateExtension on _i8.NavigationService {
   Future<dynamic> replaceWithEpisodeListView({
     _i7.Key? key,
     required int podcastId,
+    required String podcastTitle,
+    required String podcastAuthor,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -288,7 +311,11 @@ extension NavigatorStateExtension on _i8.NavigationService {
         transition,
   }) async {
     return replaceWith<dynamic>(Routes.episodeListView,
-        arguments: EpisodeListViewArguments(key: key, podcastId: podcastId),
+        arguments: EpisodeListViewArguments(
+            key: key,
+            podcastId: podcastId,
+            podcastTitle: podcastTitle,
+            podcastAuthor: podcastAuthor),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
