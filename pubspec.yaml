@@ -21,6 +21,7 @@ dependencies:
   intl: ^0.20.2
   dartz: ^0.10.1
   logger:
+  just_audio: ^0.9.39
 #  freezed_annotation: ^3.1.0
 
 dev_dependencies:

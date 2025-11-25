@@ -36,7 +36,6 @@ import 'package:jolly_podcast/core/network/rest_api_clients/auth_rest_client/aut
     LazySingleton(classType: EpisodeService),
     LazySingleton(classType: PodcastService),
     LazySingleton(classType: DioClient),
-    // LazySingleton(classType: AuthRestClient),
     InitializableSingleton(
       classType: SharedPreferenceService,
       asType: LocalStorageService,

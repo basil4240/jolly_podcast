@@ -10,21 +10,21 @@ part 'episode.g.dart';
 class Episode with _$Episode {
   const factory Episode({
     required int id,
-    @JsonKey(name: 'podcast_id') required int podcastId,
-    @JsonKey(name: 'content_url') String? contentUrl,
+    @JsonKey(name: 'podcast_id') required int podcastId, // Changed to int
+    @JsonKey(name: 'content_url') required String contentUrl,
     required String title,
-    int? season,
-    int? number,
+    int? season, // Added
+    int? number, // Added
     @JsonKey(name: 'picture_url') required String pictureUrl,
     required String description,
-    bool? explicit,
+    required bool explicit, // Added
     required int duration,
     @JsonKey(name: 'created_at') required DateTime createdAt,
     @JsonKey(name: 'updated_at') required DateTime updatedAt,
-    @JsonKey(name: 'play_count') int? playCount,
-    @JsonKey(name: 'like_count') int? likeCount,
-    @JsonKey(name: 'average_rating') String? averageRating,
-    // required Podcast podcast,
+    @JsonKey(name: 'play_count') required int playCount, // Added
+    @JsonKey(name: 'like_count') required int likeCount, // Added
+    @JsonKey(name: 'average_rating') double? averageRating, // Added
+    required Podcast podcast, // Added nested Podcast object
     @JsonKey(name: 'published_at') required DateTime publishedAt,
   }) = _Episode;
 
@@ -71,15 +71,42 @@ class PaginatedEpisodeData with _$PaginatedEpisodeData {
     required List<Episode> data,
     @JsonKey(name: 'current_page') required int currentPage,
     @JsonKey(name: 'first_page_url') String? firstPageUrl,
+    required int from,
     @JsonKey(name: 'last_page') required int lastPage,
     @JsonKey(name: 'last_page_url') String? lastPageUrl,
+    required List<Link>
+        links, // Assuming Link model is already defined in podcast.dart
     @JsonKey(name: 'next_page_url') String? nextPageUrl,
-    @JsonKey(name: 'path') String? path,
-    @JsonKey(name: 'per_page') int? perPage,
+    @JsonKey(name: 'path') required String path,
+    @JsonKey(name: 'per_page') required int perPage,
     @JsonKey(name: 'prev_page_url') String? prevPageUrl,
+    required int to,
     required int total,
   }) = _PaginatedEpisodeData;
 
   factory PaginatedEpisodeData.fromJson(Map<String, Object?> json) =>
       _$PaginatedEpisodeDataFromJson(json);
+}
+
+// New models for single episode details response
+@freezed
+class EpisodeDetailsResponse with _$EpisodeDetailsResponse {
+  const factory EpisodeDetailsResponse({
+    required String message,
+    required EpisodeDetailsData data,
+  }) = _EpisodeDetailsResponse;
+
+  factory EpisodeDetailsResponse.fromJson(Map<String, Object?> json) =>
+      _$EpisodeDetailsResponseFromJson(json);
+}
+
+@freezed
+class EpisodeDetailsData with _$EpisodeDetailsData {
+  const factory EpisodeDetailsData({
+    required String message,
+    required Episode data, // The single Episode object is nested under 'data'
+  }) = _EpisodeDetailsData;
+
+  factory EpisodeDetailsData.fromJson(Map<String, Object?> json) =>
+      _$EpisodeDetailsDataFromJson(json);
 }

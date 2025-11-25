@@ -802,6 +802,40 @@ class MockEpisodeService extends _i1.Mock implements _i11.EpisodeService {
         )),
       ) as _i3.Future<
           _i2.Either<_i9.ApiException<dynamic>, _i12.EpisodeListResponse>>);
+
+  @override
+  _i3.Future<_i2.Either<_i9.ApiException<dynamic>, _i12.EpisodeDetailsResponse>>
+      getEpisodeDetails({required int? episodeId}) => (super.noSuchMethod(
+            Invocation.method(
+              #getEpisodeDetails,
+              [],
+              {#episodeId: episodeId},
+            ),
+            returnValue: _i3.Future<
+                _i2.Either<_i9.ApiException<dynamic>,
+                    _i12.EpisodeDetailsResponse>>.value(_FakeEither_0<
+                _i9.ApiException<dynamic>, _i12.EpisodeDetailsResponse>(
+              this,
+              Invocation.method(
+                #getEpisodeDetails,
+                [],
+                {#episodeId: episodeId},
+              ),
+            )),
+            returnValueForMissingStub: _i3.Future<
+                _i2.Either<_i9.ApiException<dynamic>,
+                    _i12.EpisodeDetailsResponse>>.value(_FakeEither_0<
+                _i9.ApiException<dynamic>, _i12.EpisodeDetailsResponse>(
+              this,
+              Invocation.method(
+                #getEpisodeDetails,
+                [],
+                {#episodeId: episodeId},
+              ),
+            )),
+          ) as _i3.Future<
+              _i2
+              .Either<_i9.ApiException<dynamic>, _i12.EpisodeDetailsResponse>>);
 }
 
 /// A class which mocks [PodcastService].
