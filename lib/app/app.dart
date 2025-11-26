@@ -8,7 +8,7 @@ import 'package:jolly_podcast/ui/views/podcast_list/podcast_list_view.dart';
 import 'package:jolly_podcast/ui/views/episode_list/episode_list_view.dart';
 import 'package:jolly_podcast/ui/views/player/player_view.dart';
 import 'package:jolly_podcast/ui/dialogs/network_error/network_error_dialog.dart';
-import 'package:jolly_podcast/ui/dialogs/network_retry/network_retry_dialog.dart'; // New import
+import 'package:jolly_podcast/ui/dialogs/network_retry/network_retry_dialog.dart';
 
 import 'package:jolly_podcast/services/auth_service.dart';
 import 'package:jolly_podcast/services/episode_service.dart';
@@ -19,6 +19,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:jolly_podcast/core/network/dio_client.dart';
 import 'package:jolly_podcast/core/network/rest_api_clients/auth_rest_client/auth_rest_client.dart';
 
+/// Defines the application's routes, dependencies, bottom sheets, and dialogs
+/// using the Stacked architecture annotations.
+///
+/// This configuration is used by the `stacked_generator` to create the
+/// necessary boilerplate code for navigation, dependency injection, and UI
+/// component registration.
 @StackedApp(
   routes: [
     MaterialRoute(page: StartupView),
@@ -50,7 +56,7 @@ import 'package:jolly_podcast/core/network/rest_api_clients/auth_rest_client/aut
   dialogs: [
     StackedDialog(classType: InfoAlertDialog),
     StackedDialog(classType: NetworkErrorDialog),
-    StackedDialog(classType: NetworkRetryDialog), // New dialog registration
+    StackedDialog(classType: NetworkRetryDialog),
 // @stacked-dialog
   ],
   logger: StackedLogger(),

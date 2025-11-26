@@ -6,25 +6,29 @@ import 'package:jolly_podcast/models/podcast/podcast.dart'; // Import the Podcas
 part 'episode.freezed.dart';
 part 'episode.g.dart';
 
+/// Represents a single episode of a podcast.
+///
+/// This model is generated using the `freezed` package for immutability
+/// and `json_serializable` for JSON serialization/deserialization.
 @freezed
 class Episode with _$Episode {
   const factory Episode({
     required int id,
-    @JsonKey(name: 'podcast_id') required int podcastId, // Changed to int
+    @JsonKey(name: 'podcast_id') required int podcastId,
     @JsonKey(name: 'content_url') required String contentUrl,
     required String title,
-    int? season, // Added
-    int? number, // Added
+    int? season,
+    int? number,
     @JsonKey(name: 'picture_url') required String pictureUrl,
     required String description,
-    required bool explicit, // Added
+    required bool explicit,
     required int duration,
     @JsonKey(name: 'created_at') required DateTime createdAt,
     @JsonKey(name: 'updated_at') required DateTime updatedAt,
-    @JsonKey(name: 'play_count') required int playCount, // Added
-    @JsonKey(name: 'like_count') required int likeCount, // Added
-    @JsonKey(name: 'average_rating') double? averageRating, // Added
-    required Podcast podcast, // Added nested Podcast object
+    @JsonKey(name: 'play_count') required int playCount,
+    @JsonKey(name: 'like_count') required int likeCount,
+    @JsonKey(name: 'average_rating') double? averageRating,
+    required Podcast podcast,
     @JsonKey(name: 'published_at') required DateTime publishedAt,
   }) = _Episode;
 
@@ -33,7 +37,8 @@ class Episode with _$Episode {
   factory Episode.fromJson(Map<String, Object?> json) =>
       _$EpisodeFromJson(json);
 
-  // Custom getter for formatted date and duration
+  /// Returns a formatted string combining the creation date and duration.
+  /// Example: "20 Jun, 30 minutes"
   String get formattedDateAndDuration {
     final formattedDate = DateFormat('dd MMM').format(createdAt);
     final minutes = duration ~/ 60;
@@ -41,8 +46,7 @@ class Episode with _$Episode {
   }
 }
 
-// New models for the API response structure
-
+/// Represents the top-level API response structure for a list of episodes.
 @freezed
 class EpisodeListResponse with _$EpisodeListResponse {
   const factory EpisodeListResponse({
@@ -54,6 +58,7 @@ class EpisodeListResponse with _$EpisodeListResponse {
       _$EpisodeListResponseFromJson(json);
 }
 
+/// Represents the data payload within the EpisodeListResponse.
 @freezed
 class EpisodeResponseData with _$EpisodeResponseData {
   const factory EpisodeResponseData({
@@ -65,6 +70,9 @@ class EpisodeResponseData with _$EpisodeResponseData {
       _$EpisodeResponseDataFromJson(json);
 }
 
+/// Represents paginated data for a list of episodes.
+///
+/// Contains the list of [Episode] objects along with pagination metadata.
 @freezed
 class PaginatedEpisodeData with _$PaginatedEpisodeData {
   const factory PaginatedEpisodeData({
@@ -88,7 +96,7 @@ class PaginatedEpisodeData with _$PaginatedEpisodeData {
       _$PaginatedEpisodeDataFromJson(json);
 }
 
-// New models for single episode details response
+/// Represents the top-level API response structure for a single episode's details.
 @freezed
 class EpisodeDetailsResponse with _$EpisodeDetailsResponse {
   const factory EpisodeDetailsResponse({
@@ -100,6 +108,7 @@ class EpisodeDetailsResponse with _$EpisodeDetailsResponse {
       _$EpisodeDetailsResponseFromJson(json);
 }
 
+/// Represents the data payload within the EpisodeDetailsResponse, containing a single [Episode].
 @freezed
 class EpisodeDetailsData with _$EpisodeDetailsData {
   const factory EpisodeDetailsData({
