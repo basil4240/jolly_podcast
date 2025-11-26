@@ -16,7 +16,8 @@ class AuthInterceptor extends Interceptor {
     final token = _storageService.accessToken;
 
     // Attach token if endpoint needs it
-    final needsAuth = options.extra[annotations.requiresTokenSymbol] == true;
+    final needsAuth =
+        options.extra[annotations.requiresAuthTokenExtraKey] == true;
     if (needsAuth && token != null) {
       options.headers['Authorization'] = 'Bearer $token';
     }

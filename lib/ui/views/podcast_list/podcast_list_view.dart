@@ -13,6 +13,7 @@ class PodcastListView extends StackedView<PodcastListViewModel> {
   const PodcastListView({super.key});
 
   @override
+
   /// Builds the UI for the PodcastList screen.
   ///
   /// This method observes the [viewModel] to react to changes in the podcast
@@ -154,10 +155,8 @@ class PodcastListView extends StackedView<PodcastListViewModel> {
                                 return PodcastCard(
                                   podcast: viewModel.podcasts[index],
                                   onPodcastTapped: (podcast) =>
-                                      viewModel.onPodcastTapped(
-                                          podcast.id,
-                                          podcast.title,
-                                          podcast.author),
+                                      viewModel.onPodcastTapped(podcast.id,
+                                          podcast.title, podcast.author),
                                 );
                               },
                             ),

@@ -8,7 +8,7 @@ class RequiresToken {
   const RequiresToken();
 }
 
-/// A constant symbol used to mark API requests that require an
+/// A constant key used to mark API requests that require an
 /// authentication token in their headers. The AuthInterceptor checks
 /// for this extra value in RequestOptions.
-const String requiresTokenSymbol = 'REQUIRES_AUTH';
+const String requiresAuthTokenExtraKey = 'REQUIRES_AUTH';

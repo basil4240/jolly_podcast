@@ -36,16 +36,16 @@ class AuthService {
       }
       return Right(response);
     } on DioException catch (e) {
-      if (e.response?.statusCode == 400) {
-        return Left(BadRequestException(
-          e.response?.data['message'] ?? 'Invalid phone number',
-          statusCode: 400,
+      if (e.response?.statusCode == 401) {
+        return Left(UnauthorizedException(
+          e.response?.data['message'] ?? 'Unauthenticated',
+          statusCode: 401,
         ));
       }
-      if (e.response?.statusCode == 404) {
-        return Left(NotFoundException(
-          e.response?.data['message'] ?? 'Phone number not found',
-          statusCode: 404,
+      if (e.response?.statusCode == 403) {
+        return Left(ForbiddenException(
+          e.response?.data['message'] ?? 'Forbidden',
+          statusCode: 403,
         ));
       }
       if (e.response?.statusCode == 500) {
@@ -54,13 +54,12 @@ class AuthService {
           statusCode: 500,
         ));
       }
-
       return Left(ApiException(
         e.response?.data['message'] ?? 'An unknown error occurred',
         statusCode: e.response?.statusCode ?? 500,
       ));
     } catch (e) {
-      return Left(ApiException(e.toString(), statusCode: 500));
+      return Left(ApiException('Internal Server Error', statusCode: 500));
     }
   }
 }

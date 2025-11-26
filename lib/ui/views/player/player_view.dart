@@ -17,6 +17,7 @@ class PlayerView extends StackedView<PlayerViewModel> {
   const PlayerView({super.key, required this.episodeId});
 
   @override
+
   /// Builds the UI for the Player screen.
   ///
   /// This method observes the [viewModel] to react to changes in episode
@@ -73,7 +74,8 @@ class PlayerView extends StackedView<PlayerViewModel> {
                         ClipRRect(
                           borderRadius: BorderRadius.circular(12),
                           child: CachedNetworkImage(
-                            imageUrl: viewModel.episodePictureUrl ?? "", // Use actual image URL
+                            imageUrl: viewModel.episodePictureUrl ??
+                                "", // Use actual image URL
                             width: double.infinity,
                             height: double.infinity,
                             fit: BoxFit.cover,
@@ -81,7 +83,8 @@ class PlayerView extends StackedView<PlayerViewModel> {
                                 Container(color: colors.color10),
                             errorWidget: (context, url, error) => Container(
                               color: colors.color10,
-                              child: const Icon(Icons.error, color: Colors.white24),
+                              child: const Icon(Icons.error,
+                                  color: Colors.white24),
                             ),
                           ),
                         ),
@@ -90,7 +93,8 @@ class PlayerView extends StackedView<PlayerViewModel> {
                           child: Align(
                             alignment: Alignment.bottomLeft,
                             child: Text(
-                              viewModel.episodeTitle ?? 'Episode Title', // Use actual title
+                              viewModel.episodeTitle ??
+                                  'Episode Title', // Use actual title
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
@@ -153,13 +157,17 @@ class PlayerView extends StackedView<PlayerViewModel> {
                                   trackHeight: 3,
                                 ),
                                 child: Slider(
-                                  value: viewModel.currentPosition.inSeconds.toDouble(),
+                                  value: viewModel.currentPosition.inSeconds
+                                      .toDouble(),
                                   min: 0.0,
-                                  max: viewModel.totalDuration.inSeconds.toDouble(),
+                                  max: viewModel.totalDuration.inSeconds
+                                      .toDouble(),
                                   onChanged: (value) {
-                                    viewModel.seek(Duration(seconds: value.toInt()));
+                                    viewModel
+                                        .seek(Duration(seconds: value.toInt()));
                                   },
-                                  allowedInteraction: SliderInteraction.tapAndSlide,
+                                  allowedInteraction:
+                                      SliderInteraction.tapAndSlide,
                                 ),
                               ),
                             ),
@@ -197,7 +205,9 @@ class PlayerView extends StackedView<PlayerViewModel> {
                             ),
                             child: IconButton(
                               icon: Icon(
-                                viewModel.isPlaying ? Icons.pause : Icons.play_arrow,
+                                viewModel.isPlaying
+                                    ? Icons.pause
+                                    : Icons.play_arrow,
                                 color: colors.color1,
                                 size: 24,
                               ),

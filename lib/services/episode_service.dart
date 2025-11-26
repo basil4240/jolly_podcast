@@ -55,12 +55,6 @@ class EpisodeService {
           statusCode: 403,
         ));
       }
-      if (e.response?.statusCode == 404) {
-        return Left(NotFoundException(
-          e.response?.data['message'] ?? 'Episode not found',
-          statusCode: 404,
-        ));
-      }
       if (e.response?.statusCode == 500) {
         return Left(ServerException(
           e.response?.data['message'] ?? 'Server error',
@@ -73,6 +67,7 @@ class EpisodeService {
         statusCode: e.response?.statusCode ?? 500,
       ));
     } catch (e) {
+      print((e as dynamic).stackTrace);
       return Left(ApiException('Internal Server Error', statusCode: 500));
     }
   }
@@ -99,12 +94,6 @@ class EpisodeService {
         return Left(ForbiddenException(
           e.response?.data['message'] ?? 'Forbidden',
           statusCode: 403,
-        ));
-      }
-      if (e.response?.statusCode == 404) {
-        return Left(NotFoundException(
-          e.response?.data['message'] ?? 'Episode not found',
-          statusCode: 404,
         ));
       }
       if (e.response?.statusCode == 500) {

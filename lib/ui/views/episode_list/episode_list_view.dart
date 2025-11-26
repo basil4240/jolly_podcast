@@ -23,6 +23,7 @@ class EpisodeListView extends StackedView<EpisodeListViewModel> {
       required this.podcastAuthor});
 
   @override
+
   /// Builds the UI for the EpisodeList screen.
   ///
   /// This method observes the [viewModel] to react to changes in the episode

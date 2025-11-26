@@ -29,18 +29,13 @@ mixin _$Episode {
   int? get season => throw _privateConstructorUsedError;
   int? get number => throw _privateConstructorUsedError;
   @JsonKey(name: 'picture_url')
-  String get pictureUrl => throw _privateConstructorUsedError;
+  String? get pictureUrl => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  bool get explicit => throw _privateConstructorUsedError;
   int get duration => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
   DateTime get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'updated_at')
   DateTime get updatedAt => throw _privateConstructorUsedError;
-  @JsonKey(name: 'play_count')
-  int get playCount => throw _privateConstructorUsedError;
-  @JsonKey(name: 'like_count')
-  int get likeCount => throw _privateConstructorUsedError;
   @JsonKey(name: 'average_rating')
   double? get averageRating => throw _privateConstructorUsedError;
   Podcast get podcast => throw _privateConstructorUsedError;
@@ -64,14 +59,11 @@ abstract class $EpisodeCopyWith<$Res> {
       String title,
       int? season,
       int? number,
-      @JsonKey(name: 'picture_url') String pictureUrl,
+      @JsonKey(name: 'picture_url') String? pictureUrl,
       String description,
-      bool explicit,
       int duration,
       @JsonKey(name: 'created_at') DateTime createdAt,
       @JsonKey(name: 'updated_at') DateTime updatedAt,
-      @JsonKey(name: 'play_count') int playCount,
-      @JsonKey(name: 'like_count') int likeCount,
       @JsonKey(name: 'average_rating') double? averageRating,
       Podcast podcast,
       @JsonKey(name: 'published_at') DateTime publishedAt});
@@ -98,14 +90,11 @@ class _$EpisodeCopyWithImpl<$Res, $Val extends Episode>
     Object? title = null,
     Object? season = freezed,
     Object? number = freezed,
-    Object? pictureUrl = null,
+    Object? pictureUrl = freezed,
     Object? description = null,
-    Object? explicit = null,
     Object? duration = null,
     Object? createdAt = null,
     Object? updatedAt = null,
-    Object? playCount = null,
-    Object? likeCount = null,
     Object? averageRating = freezed,
     Object? podcast = null,
     Object? publishedAt = null,
@@ -135,18 +124,14 @@ class _$EpisodeCopyWithImpl<$Res, $Val extends Episode>
           ? _value.number
           : number // ignore: cast_nullable_to_non_nullable
               as int?,
-      pictureUrl: null == pictureUrl
+      pictureUrl: freezed == pictureUrl
           ? _value.pictureUrl
           : pictureUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      explicit: null == explicit
-          ? _value.explicit
-          : explicit // ignore: cast_nullable_to_non_nullable
-              as bool,
       duration: null == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
@@ -159,14 +144,6 @@ class _$EpisodeCopyWithImpl<$Res, $Val extends Episode>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      playCount: null == playCount
-          ? _value.playCount
-          : playCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      likeCount: null == likeCount
-          ? _value.likeCount
-          : likeCount // ignore: cast_nullable_to_non_nullable
-              as int,
       averageRating: freezed == averageRating
           ? _value.averageRating
           : averageRating // ignore: cast_nullable_to_non_nullable
@@ -205,14 +182,11 @@ abstract class _$$EpisodeImplCopyWith<$Res> implements $EpisodeCopyWith<$Res> {
       String title,
       int? season,
       int? number,
-      @JsonKey(name: 'picture_url') String pictureUrl,
+      @JsonKey(name: 'picture_url') String? pictureUrl,
       String description,
-      bool explicit,
       int duration,
       @JsonKey(name: 'created_at') DateTime createdAt,
       @JsonKey(name: 'updated_at') DateTime updatedAt,
-      @JsonKey(name: 'play_count') int playCount,
-      @JsonKey(name: 'like_count') int likeCount,
       @JsonKey(name: 'average_rating') double? averageRating,
       Podcast podcast,
       @JsonKey(name: 'published_at') DateTime publishedAt});
@@ -238,14 +212,11 @@ class __$$EpisodeImplCopyWithImpl<$Res>
     Object? title = null,
     Object? season = freezed,
     Object? number = freezed,
-    Object? pictureUrl = null,
+    Object? pictureUrl = freezed,
     Object? description = null,
-    Object? explicit = null,
     Object? duration = null,
     Object? createdAt = null,
     Object? updatedAt = null,
-    Object? playCount = null,
-    Object? likeCount = null,
     Object? averageRating = freezed,
     Object? podcast = null,
     Object? publishedAt = null,
@@ -275,18 +246,14 @@ class __$$EpisodeImplCopyWithImpl<$Res>
           ? _value.number
           : number // ignore: cast_nullable_to_non_nullable
               as int?,
-      pictureUrl: null == pictureUrl
+      pictureUrl: freezed == pictureUrl
           ? _value.pictureUrl
           : pictureUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      explicit: null == explicit
-          ? _value.explicit
-          : explicit // ignore: cast_nullable_to_non_nullable
-              as bool,
       duration: null == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
@@ -299,14 +266,6 @@ class __$$EpisodeImplCopyWithImpl<$Res>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      playCount: null == playCount
-          ? _value.playCount
-          : playCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      likeCount: null == likeCount
-          ? _value.likeCount
-          : likeCount // ignore: cast_nullable_to_non_nullable
-              as int,
       averageRating: freezed == averageRating
           ? _value.averageRating
           : averageRating // ignore: cast_nullable_to_non_nullable
@@ -333,14 +292,11 @@ class _$EpisodeImpl extends _Episode with DiagnosticableTreeMixin {
       required this.title,
       this.season,
       this.number,
-      @JsonKey(name: 'picture_url') required this.pictureUrl,
+      @JsonKey(name: 'picture_url') this.pictureUrl,
       required this.description,
-      required this.explicit,
       required this.duration,
       @JsonKey(name: 'created_at') required this.createdAt,
       @JsonKey(name: 'updated_at') required this.updatedAt,
-      @JsonKey(name: 'play_count') required this.playCount,
-      @JsonKey(name: 'like_count') required this.likeCount,
       @JsonKey(name: 'average_rating') this.averageRating,
       required this.podcast,
       @JsonKey(name: 'published_at') required this.publishedAt})
@@ -365,11 +321,9 @@ class _$EpisodeImpl extends _Episode with DiagnosticableTreeMixin {
   final int? number;
   @override
   @JsonKey(name: 'picture_url')
-  final String pictureUrl;
+  final String? pictureUrl;
   @override
   final String description;
-  @override
-  final bool explicit;
   @override
   final int duration;
   @override
@@ -378,12 +332,6 @@ class _$EpisodeImpl extends _Episode with DiagnosticableTreeMixin {
   @override
   @JsonKey(name: 'updated_at')
   final DateTime updatedAt;
-  @override
-  @JsonKey(name: 'play_count')
-  final int playCount;
-  @override
-  @JsonKey(name: 'like_count')
-  final int likeCount;
   @override
   @JsonKey(name: 'average_rating')
   final double? averageRating;
@@ -395,7 +343,7 @@ class _$EpisodeImpl extends _Episode with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Episode(id: $id, podcastId: $podcastId, contentUrl: $contentUrl, title: $title, season: $season, number: $number, pictureUrl: $pictureUrl, description: $description, explicit: $explicit, duration: $duration, createdAt: $createdAt, updatedAt: $updatedAt, playCount: $playCount, likeCount: $likeCount, averageRating: $averageRating, podcast: $podcast, publishedAt: $publishedAt)';
+    return 'Episode(id: $id, podcastId: $podcastId, contentUrl: $contentUrl, title: $title, season: $season, number: $number, pictureUrl: $pictureUrl, description: $description, duration: $duration, createdAt: $createdAt, updatedAt: $updatedAt, averageRating: $averageRating, podcast: $podcast, publishedAt: $publishedAt)';
   }
 
   @override
@@ -411,12 +359,9 @@ class _$EpisodeImpl extends _Episode with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('number', number))
       ..add(DiagnosticsProperty('pictureUrl', pictureUrl))
       ..add(DiagnosticsProperty('description', description))
-      ..add(DiagnosticsProperty('explicit', explicit))
       ..add(DiagnosticsProperty('duration', duration))
       ..add(DiagnosticsProperty('createdAt', createdAt))
       ..add(DiagnosticsProperty('updatedAt', updatedAt))
-      ..add(DiagnosticsProperty('playCount', playCount))
-      ..add(DiagnosticsProperty('likeCount', likeCount))
       ..add(DiagnosticsProperty('averageRating', averageRating))
       ..add(DiagnosticsProperty('podcast', podcast))
       ..add(DiagnosticsProperty('publishedAt', publishedAt));
@@ -439,18 +384,12 @@ class _$EpisodeImpl extends _Episode with DiagnosticableTreeMixin {
                 other.pictureUrl == pictureUrl) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            (identical(other.explicit, explicit) ||
-                other.explicit == explicit) &&
             (identical(other.duration, duration) ||
                 other.duration == duration) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
                 other.updatedAt == updatedAt) &&
-            (identical(other.playCount, playCount) ||
-                other.playCount == playCount) &&
-            (identical(other.likeCount, likeCount) ||
-                other.likeCount == likeCount) &&
             (identical(other.averageRating, averageRating) ||
                 other.averageRating == averageRating) &&
             (identical(other.podcast, podcast) || other.podcast == podcast) &&
@@ -470,12 +409,9 @@ class _$EpisodeImpl extends _Episode with DiagnosticableTreeMixin {
       number,
       pictureUrl,
       description,
-      explicit,
       duration,
       createdAt,
       updatedAt,
-      playCount,
-      likeCount,
       averageRating,
       podcast,
       publishedAt);
@@ -502,14 +438,11 @@ abstract class _Episode extends Episode {
           required final String title,
           final int? season,
           final int? number,
-          @JsonKey(name: 'picture_url') required final String pictureUrl,
+          @JsonKey(name: 'picture_url') final String? pictureUrl,
           required final String description,
-          required final bool explicit,
           required final int duration,
           @JsonKey(name: 'created_at') required final DateTime createdAt,
           @JsonKey(name: 'updated_at') required final DateTime updatedAt,
-          @JsonKey(name: 'play_count') required final int playCount,
-          @JsonKey(name: 'like_count') required final int likeCount,
           @JsonKey(name: 'average_rating') final double? averageRating,
           required final Podcast podcast,
           @JsonKey(name: 'published_at') required final DateTime publishedAt}) =
@@ -534,11 +467,9 @@ abstract class _Episode extends Episode {
   int? get number;
   @override
   @JsonKey(name: 'picture_url')
-  String get pictureUrl;
+  String? get pictureUrl;
   @override
   String get description;
-  @override
-  bool get explicit;
   @override
   int get duration;
   @override
@@ -547,12 +478,6 @@ abstract class _Episode extends Episode {
   @override
   @JsonKey(name: 'updated_at')
   DateTime get updatedAt;
-  @override
-  @JsonKey(name: 'play_count')
-  int get playCount;
-  @override
-  @JsonKey(name: 'like_count')
-  int get likeCount;
   @override
   @JsonKey(name: 'average_rating')
   double? get averageRating;

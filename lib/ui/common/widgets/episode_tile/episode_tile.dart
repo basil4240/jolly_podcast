@@ -35,7 +35,7 @@ class EpisodeTile extends StackedView<EpisodeTileModel> {
                 borderRadius: BorderRadius.circular(8),
                 child: CachedNetworkImage(
                   imageUrl:
-                      'https://corsproxy.io/?${Uri.encodeComponent(episode.pictureUrl)}',
+                      'https://corsproxy.io/?${Uri.encodeComponent(episode.pictureUrl ?? '')}',
                   width: 80,
                   height: 80,
                   fit: BoxFit.cover,

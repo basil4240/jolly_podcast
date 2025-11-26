@@ -38,6 +38,7 @@ class PlayerViewModel extends FutureViewModel<Episode> {
   PlayerViewModel({required this.episodeId});
 
   @override
+
   /// Fetches the episode details and initializes the audio player.
   ///
   /// This method is called automatically by `FutureViewModel` on initialization.
@@ -114,6 +115,7 @@ class PlayerViewModel extends FutureViewModel<Episode> {
   }
 
   @override
+
   /// Disposes of the audio player resources when the ViewModel is no longer needed.
   void dispose() {
     _audioPlayer.dispose();
