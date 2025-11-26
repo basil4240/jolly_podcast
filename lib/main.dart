@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:jolly_podcast/app/app.bottomsheets.dart';
 import 'package:jolly_podcast/app/app.dialogs.dart';
 import 'package:jolly_podcast/app/app.locator.dart';
@@ -9,6 +10,12 @@ import 'package:stacked_services/stacked_services.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+
   await setupLocator();
   setupDialogUi();
   setupBottomSheetUi();
